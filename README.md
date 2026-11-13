@@ -30,14 +30,14 @@ Tested on **GLPI 12.0.1** (works on GLPI 11.0+ / 12.x, PHP 8.2+).
 
 ```bash
 cd /var/www/glpi/marketplace
-tar xzf pluginupload-1.0.1.tar.gz
+tar xzf pluginupload-1.0.2.tar.gz
 chown -R www-data:www-data /var/www/glpi/marketplace
 ```
 
 **Docker (glpi/glpi image):**
 
 ```bash
-tar xzf pluginupload-1.0.1.tar.gz
+tar xzf pluginupload-1.0.2.tar.gz
 docker exec -u root <container> mkdir -p /var/www/glpi/marketplace
 docker cp pluginupload <container>:/var/www/glpi/marketplace/pluginupload
 docker exec -u root <container> chown -R www-data:www-data /var/www/glpi/marketplace

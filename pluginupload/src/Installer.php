@@ -19,6 +19,9 @@ class Installer
     public string $plugin_key = '';
     public string $plugin_name = '';
     public string $plugin_version = '';
+    public string $plugin_author = '';
+    public string $plugin_license = '';
+    public string $plugin_homepage = '';
 
     /**
      * @return string|null error message, or null on success
@@ -229,6 +232,11 @@ class Installer
             || preg_match("/'version'\s*=>\s*'([^']{1,30})'/", $code, $m)) {
             $this->plugin_version = $m[1];
         }
+        foreach (['author' => 'plugin_author', 'license' => 'plugin_license', 'homepage' => 'plugin_homepage'] as $k => $prop) {
+            if (preg_match("/'" . $k . "'\\s*=>\\s*'([^']{0,200})'/", $code, $m)) {
+                $this->$prop = $m[1];
+            }
+        }
         if ($this->plugin_name === '') {
             $this->plugin_name = $key;
         }
@@ -303,7 +311,13 @@ class Installer
     {
         $plugin = new Plugin();
         if ($plugin->getFromDBbyDir($this->plugin_key)) {
-            $input = ['id' => $plugin->fields['id']];
+            $input = [
+                'id'       => $plugin->fields['id'],
+                'name'     => $this->plugin_name,
+                'author'   => $this->plugin_author,
+                'license'  => $this->plugin_license,
+                'homepage' => $this->plugin_homepage,
+            ];
             if ($this->plugin_version !== '') {
                 $input['version'] = $this->plugin_version;
             }
@@ -317,6 +331,9 @@ class Installer
                 'directory' => $this->plugin_key,
                 'version'   => $this->plugin_version !== '' ? $this->plugin_version : '0',
                 'state'     => Plugin::NOTINSTALLED,
+                'author'    => $this->plugin_author,
+                'license'   => $this->plugin_license,
+                'homepage'  => $this->plugin_homepage,
             ]);
         }
 

@@ -7,7 +7,7 @@
  * Settings page: Setup > Plugins > Plugin Uploader (wrench icon).
  */
 
-define('PLUGIN_PLUGINUPLOAD_VERSION', '1.0.1');
+define('PLUGIN_PLUGINUPLOAD_VERSION', '1.0.2');
 
 function plugin_init_pluginupload()
 {
