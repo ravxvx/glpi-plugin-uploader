@@ -6,6 +6,8 @@ Tested on **GLPI 12.0.1** (works on GLPI 11.0+ / 12.x, PHP 8.2+).
 
 ![Upload page](screenshots/upload.png)
 
+**Download:** [`pluginupload-1.0.2.tar.gz`](https://github.com/ravxvx/glpi-plugin-uploader/raw/main/dist/pluginupload-1.0.2.tar.gz) – ready to upload in GLPI Plugin Uploader or to extract into the GLPI plugins folder.
+
 ## Features
 
 - Upload `.zip`, `.tar.gz`, `.tgz`, `.tar.bz2` or `.tar`
